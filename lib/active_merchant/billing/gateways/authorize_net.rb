@@ -269,7 +269,7 @@ module ActiveMerchant #:nodoc:
         # Only activate the test_request when the :test option is passed in
         parameters[:test_request] = @options[:test] ? 'TRUE' : 'FALSE'
 
-        url = test? ? self.test_url : self.live_url
+        url = test? || sandbox? ? self.test_url : self.live_url
         data = ssl_post url, post_data(action, parameters)
 
         response          = parse(data)
