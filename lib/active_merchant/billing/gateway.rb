@@ -135,7 +135,7 @@ module ActiveMerchant #:nodoc:
 
       # Are we running in sandbox mode?
       def sandbox?
-        (@options.has_key?(:server) ? @options[:server] : Base.sandbox?)
+        (@options.has_key?(:server) ? @options[:server].downcase === "sandbox" : Base.sandbox?)
       end
 
       private # :nodoc: all

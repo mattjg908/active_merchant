@@ -683,7 +683,7 @@ module ActiveMerchant #:nodoc:
       end
 
       def recurring_commit(action, request)
-        url = test? ? arb_test_url : arb_live_url
+        url = test? || sandbox? ? arb_test_url : arb_live_url
         xml = ssl_post(url, request, "Content-Type" => "text/xml")
 
         response = recurring_parse(action, xml)
